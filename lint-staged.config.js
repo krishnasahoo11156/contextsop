@@ -32,7 +32,7 @@ module.exports = {
   // Backend Python files
   "backend/**/*.py": (filenames) => {
     const relativeFiles = filenames.map((file) => path.relative("backend", file).replace(/\\/g, "/"));
-    const ruffExec = isWin ? ".venv/Scripts/ruff" : ".venv/bin/ruff";
+    const ruffExec = isWin ? ".venv\\\\Scripts\\\\ruff" : ".venv/bin/ruff";
     const filesStr = relativeFiles.join(" ");
     return [
       runInDir("backend", `${ruffExec} check --fix ${filesStr}`),
