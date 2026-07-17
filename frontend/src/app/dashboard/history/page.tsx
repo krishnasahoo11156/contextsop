@@ -108,7 +108,7 @@ export default function HistoryVaultPage() {
           );
         setExecutions(flattenedExecs);
       } catch (err) {
-        console.error("Failed to load history vault data:", err);
+        console.warn("Failed to load history vault data:", err);
         setError(
           "Failed to fetch historical runs and document versions. Please check connection.",
         );
