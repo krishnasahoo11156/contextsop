@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="350px" style="background:#0b0f19; border-radius:16px; border:1px solid #1e293b; font-family: monospace;">
+  <!-- Styling and Keyframe Animations -->
+  <style>
+    .terminal-text { font-size: 11px; fill: #64748b; font-family: Courier, monospace; }
+    .dsl-text { font-size: 11px; fill: #38bdf8; font-family: Courier, monospace; }
+    .ui-text { font-size: 12px; fill: #f8fafc; font-family: system-ui, sans-serif; font-weight: 600; }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
+    }
+    @keyframes scan {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(220px); opacity: 0; }
+    }
+    @keyframes data-flow {
+      0% { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes text-fade {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    @keyframes check-reveal {
+      0%, 20% { opacity: 0; transform: scale(0.8); }
+      35%, 100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes gear-rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .pulse-glow { animation: pulse 3s infinite ease-in-out; }
+    .scanner-line { animation: scan 4s infinite linear; }
+    .flow-line { stroke-dasharray: 8, 4; animation: data-flow 2s infinite linear; }
+    .fade-1 { animation: text-fade 4s infinite; }
+    .fade-2 { animation: text-fade 4s infinite 1s; }
+    .fade-3 { animation: text-fade 4s infinite 2s; }
+    .check-1 { animation: check-reveal 4s infinite; transform-origin: 573px 108px; }
+    .check-2 { animation: check-reveal 4s infinite 0.8s; transform-origin: 573px 158px; }
+    .check-3 { animation: check-reveal 4s infinite 1.6s; transform-origin: 573px 208px; }
+    .gear { transform-origin: 50px 50px; animation: gear-rotate 10s infinite linear; }
+  </style>
+
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="violet-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0d9488" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b69cff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#b69cff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#b69cff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Raw Log Ingestion Box -->
+  <rect x="30" y="40" width="220" height="260" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="30" y="40" width="220" height="35" rx="12" fill="#1e293b" opacity="0.5"/>
+  <circle cx="50" cy="57" r="4" fill="#ef4444"/>
+  <circle cx="62" cy="57" r="4" fill="#f59e0b"/>
+  <circle cx="74" cy="57" r="4" fill="#10b981"/>
+  <text x="90" y="61" fill="#94a3b8" font-size="10" font-weight="bold">RAW_LOG_INGESTION</text>
+  
+  <g transform="translate(45, 100)">
+    <text x="0" y="0" class="terminal-text fade-1">&gt; kubectl logs db-replica-0</text>
+    <text x="0" y="18" class="terminal-text fade-1" fill="#ef4444">ERROR: Connect failure to host</text>
+    <text x="0" y="36" class="terminal-text fade-2">&gt; ping 10.244.1.45 -c 3</text>
+    <text x="0" y="54" class="terminal-text fade-2">3 packets transmitted, 0 received</text>
+    <text x="0" y="72" class="terminal-text fade-3">&gt; cat /etc/resolv.conf</text>
+    <text x="0" y="90" class="terminal-text fade-3">nameserver 127.0.0.53</text>
+    <text x="0" y="108" class="terminal-text fade-1" fill="#f59e0b">WARNING: DNS resolver failure</text>
+  </g>
+  <rect x="32" y="80" width="216" height="4" fill="url(#laser-grad)" class="scanner-line"/>
+
+  <!-- Flow Lines (Left to Center) -->
+  <path d="M 250 170 Q 300 170 350 160" fill="none" stroke="url(#neon-glow)" stroke-width="2" class="flow-line"/>
+
+  <!-- Center: AI Compilation Engine -->
+  <g transform="translate(350, 110)">
+    <rect x="0" y="0" width="100" height="100" rx="50" fill="url(#violet-teal)" stroke="#8b5cf6" stroke-width="2" class="pulse-glow"/>
+    <!-- Gear icon inside AI center -->
+    <path class="gear" d="M50,25 L50,75 M25,50 L75,50 M32,32 L68,68 M32,68 L68,32" stroke="#8b5cf6" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="22" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="50" y="54" fill="#a78bfa" font-size="11" font-weight="bold" text-anchor="middle">GPT-4o</text>
+    <text x="50" y="118" fill="#a78bfa" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">AI ENGINE</text>
+  </g>
+
+  <!-- Flow Lines (Center to Right) -->
+  <path d="M 450 160 Q 500 170 550 170" fill="none" stroke="url(#neon-glow)" stroke-width="2" class="flow-line"/>
+
+  <!-- Right: Dynamic Interactive SOP Interface -->
+  <rect x="550" y="40" width="220" height="260" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+  <rect x="550" y="40" width="220" height="35" rx="12" fill="#1e293b" opacity="0.5"/>
+  <circle cx="570" cy="57" r="4" fill="#ef4444"/>
+  <circle cx="582" cy="57" r="4" fill="#f59e0b"/>
+  <circle cx="594" cy="57" r="4" fill="#10b981"/>
+  <text x="610" y="61" fill="#94a3b8" font-size="10" font-weight="bold">ACTIVE_RUNBOOK</text>
+
+  <!-- Checklist Step 1 -->
+  <g transform="translate(565, 100)">
+    <!-- Checkbox -->
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <path class="check-1" d="M3 8 L7 12 L13 4" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="25" y="12" class="ui-text">1. Check logs</text>
+    <text x="25" y="24" fill="#64748b" font-size="9">Completed • 10.244.1.45</text>
+  </g>
+
+  <!-- Checklist Step 2 -->
+  <g transform="translate(565, 150)">
+    <!-- Checkbox -->
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <path class="check-2" d="M3 8 L7 12 L13 4" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="25" y="12" class="ui-text">2. Validate ping</text>
+    <text x="25" y="24" fill="#64748b" font-size="9">Completed • Success</text>
+  </g>
+
+  <!-- Checklist Step 3 -->
+  <g transform="translate(565, 200)">
+    <!-- Checkbox -->
+    <rect x="0" y="0" width="16" height="16" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <path class="check-3" d="M3 8 L7 12 L13 4" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="25" y="12" class="ui-text">3. Fix resolver</text>
+    <text x="25" y="24" fill="#64748b" font-size="9">In Progress...</text>
+  </g>
+
+  <!-- Badge Info at Bottom -->
+  <rect x="565" y="260" width="190" height="24" rx="6" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="670" y="276" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle">EXPORT: HTML / MD / PDF / JSON</text>
+</svg>
