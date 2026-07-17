@@ -7,6 +7,7 @@ import {
   createSopExecution,
   updateSopExecution,
 } from "@/lib/services/db";
+import ExportDropdown from "@/components/layout/ExportDropdown";
 import { useRunbookStore, StepStatus } from "@/stores/runbookStore";
 import {
   CheckCircle2,
@@ -371,7 +372,13 @@ export default function RunbookPage({ params }: PageProps) {
                 {metadata.title}
               </h2>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              {sop && (
+                <ExportDropdown
+                  dslPayload={sop.dsl_payload}
+                  title={sop.title}
+                />
+              )}
               <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 capitalize font-mono animate-pulse">
                 Active
               </span>
