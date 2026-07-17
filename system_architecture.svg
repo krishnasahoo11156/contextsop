@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="480px" style="background:#0b0f19; border-radius:16px; border:1px solid #1e293b; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="glow-violet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="glow-teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="glow-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-glow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <!-- Typography styles -->
+  <style>
+    .group-title { font-size: 11px; fill: #94a3b8; font-weight: 800; letter-spacing: 1.5px; }
+    .box-title { font-size: 12px; fill: #f8fafc; font-weight: 700; }
+    .box-desc { font-size: 9.5px; fill: #64748b; font-weight: 500; }
+    .flow-label { font-size: 9px; fill: #38bdf8; font-weight: 600; font-family: monospace; }
+  </style>
+
+  <!-- ==================== CLIENT BROWSER CONTAINER ==================== -->
+  <rect x="25" y="25" width="850" height="200" rx="16" fill="url(#glow-violet)" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.3"/>
+  <rect x="25" y="25" width="850" height="35" rx="16" fill="#1e293b" opacity="0.3"/>
+  <text x="45" y="47" class="group-title">CLIENT BROWSER (NEXT.JS 15 APP ROUTER)</text>
+
+  <!-- Subcomponent 1: Landing Page -->
+  <g transform="translate(50, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="15" y="25" class="box-title">Landing Page</text>
+    <text x="15" y="45" class="box-desc">Brand Identity</text>
+    <text x="15" y="60" class="box-desc">Framer Showcase</text>
+    <text x="15" y="75" class="box-desc">Case Studies</text>
+  </g>
+
+  <!-- Subcomponent 2: Auth Manager -->
+  <g transform="translate(190, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="15" y="25" class="box-title">Auth &amp; Profile</text>
+    <text x="15" y="45" class="box-desc">Supabase SSR Auth</text>
+    <text x="15" y="60" class="box-desc">Session Guards</text>
+    <text x="15" y="75" class="box-desc">Organization Hooks</text>
+  </g>
+
+  <!-- Subcomponent 3: Dashboard Shell -->
+  <g transform="translate(330, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="15" y="25" class="box-title">Dashboard Shell</text>
+    <text x="15" y="45" class="box-desc">Zustand Store</text>
+    <text x="15" y="60" class="box-desc">Layout Manager</text>
+    <text x="15" y="75" class="box-desc">Templates Library</text>
+  </g>
+
+  <!-- Subcomponent 4: Ingestion Panel -->
+  <g transform="translate(470, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="15" y="25" class="box-title" fill="#a78bfa">Ingestion Panel</text>
+    <text x="15" y="45" class="box-desc">Drag-and-Drop</text>
+    <text x="15" y="60" class="box-desc">FileReader API</text>
+    <text x="15" y="75" class="box-desc">Token Estimator</text>
+  </g>
+
+  <!-- Subcomponent 5: Runbook Execution -->
+  <g transform="translate(610, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.7"/>
+    <text x="15" y="25" class="box-title" fill="#34d399">Runbook Page</text>
+    <text x="15" y="45" class="box-desc">DSL Interpreter</text>
+    <text x="15" y="60" class="box-desc">Variable Overrides</text>
+    <text x="15" y="75" class="box-desc">Verify Triggers</text>
+  </g>
+
+  <!-- Subcomponent 6: Export System -->
+  <g transform="translate(750, 80)">
+    <rect width="115" height="115" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="15" y="25" class="box-title">Export Panel</text>
+    <text x="15" y="45" class="box-desc">Markdown &amp; HTML</text>
+    <text x="15" y="60" class="box-desc">PDF Streaming</text>
+    <text x="15" y="75" class="box-desc">DSL JSON File</text>
+  </g>
+
+
+  <!-- ==================== BACKEND SERVICES CONTAINER ==================== -->
+  <rect x="25" y="300" width="850" height="155" rx="16" fill="url(#glow-teal)" stroke="#0d9488" stroke-width="1.5" stroke-opacity="0.3"/>
+  <rect x="25" y="300" width="850" height="35" rx="16" fill="#1e293b" opacity="0.3"/>
+  <text x="45" y="322" class="group-title">BACKEND SERVICES &amp; PERSISTENCE LAYERS</text>
+
+  <!-- Subcomponent A: Supabase Postgres -->
+  <g transform="translate(50, 350)">
+    <rect width="170" height="85" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6"/>
+    <text x="15" y="25" class="box-title" fill="#34d399">Supabase Database</text>
+    <text x="15" y="48" class="box-desc">Tenant Organizations &amp; RLS</text>
+    <text x="15" y="63" class="box-desc">SOP versions &amp; run logs</text>
+  </g>
+
+  <!-- Subcomponent B: Flask REST API -->
+  <g transform="translate(260, 350)">
+    <rect width="170" height="85" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6"/>
+    <text x="15" y="25" class="box-title" fill="#60a5fa">Flask API Gateways</text>
+    <text x="15" y="48" class="box-desc">Secure verify proxy</text>
+    <text x="15" y="63" class="box-desc">Rate limiters &amp; Auth check</text>
+  </g>
+
+  <!-- Subcomponent C: Pydantic Validation & DSL compiler -->
+  <g transform="translate(470, 350)">
+    <rect width="170" height="85" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.6"/>
+    <text x="15" y="25" class="box-title" fill="#60a5fa">Pydantic Compiler</text>
+    <text x="15" y="48" class="box-desc">DAG validation checks</text>
+    <text x="15" y="63" class="box-desc">DSL payload serialization</text>
+  </g>
+
+  <!-- Subcomponent D: OpenAI Completion Engine -->
+  <g transform="translate(680, 350)">
+    <rect width="170" height="85" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.6"/>
+    <text x="15" y="25" class="box-title" fill="#a78bfa">AI Context Parser</text>
+    <text x="15" y="48" class="box-desc">GPT-4o mini APIs</text>
+    <text x="15" y="63" class="box-desc">Redact credentials/secrets</text>
+  </g>
+
+
+  <!-- ==================== FLOW ARROWS & LABELS ==================== -->
+  
+  <!-- Flow: Ingestion -> Flask API (Generate POST) -->
+  <path d="M 527 195 L 527 270 Q 527 285 410 285 Q 345 285 345 350" fill="none" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="460" y="258" class="flow-label">POST /generate</text>
+
+  <!-- Flow: Runbook -> Flask API (Verify check proxy) -->
+  <g opacity="0.85">
+    <path d="M 667 195 L 667 278 Q 667 292 420 292 L 420 350" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+    <text x="590" y="278" class="flow-label" fill="#34d399">/verify proxy</text>
+  </g>
+
+  <!-- Flow: Export System -> Flask API (Download POST) -->
+  <path d="M 807 195 L 807 285 L 430 285 L 430 350" fill="none" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="730" y="258" class="flow-label" fill="#94a3b8">POST /export</text>
+
+  <!-- Connection: Flask API -> Pydantic Compiler -->
+  <path d="M 430 392 L 470 392" fill="none" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrow-glow)"/>
+
+  <!-- Connection: Pydantic -> AI Parser -->
+  <path d="M 640 392 L 680 392" fill="none" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Connection: Pydantic -> Supabase (Save/Sync) -->
+  <path d="M 555 435 L 555 448 L 135 448 L 135 435" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+  <text x="310" y="443" class="flow-label" fill="#34d399">Save DSL &amp; Exec logs</text>
+
+  <!-- Direct database calls from Frontend Auth -->
+  <path d="M 247 195 L 247 280 L 135 280 L 135 350" fill="none" stroke="#475569" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="150" y="258" class="flow-label" fill="#94a3b8">Supabase Auth SDK</text>
+
+</svg>

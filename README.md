@@ -27,7 +27,7 @@ The interactive sequence below demonstrates how ContextSOP ingests unstructured 
 The following diagram illustrates the global architecture and data flow from log ingestion to active execution and export pipelines:
 
 <p align="center">
-  <img src="system_architecture.png" alt="ContextSOP System Architecture Diagram" width="100%" style="border-radius: 16px; border: 1px solid #334155;" />
+  <img src="system_architecture.svg" alt="ContextSOP System Architecture Diagram" width="100%" style="border-radius: 16px; border: 1px solid #1e293b;" />
 </p>
 
 ---
