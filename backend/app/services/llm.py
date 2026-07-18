@@ -1,8 +1,8 @@
 import logging
 
 import tiktoken
-from openai import OpenAI
 
+from ..config import get_api_keys, get_llm_client_and_model
 from ..schemas import WorkflowDsl
 
 logger = logging.getLogger(__name__)
@@ -137,26 +137,36 @@ def extract_sop_from_transcript(transcript: str, api_key: str) -> WorkflowDsl:
     # 1. Truncate transcript to fit context window budget
     safe_transcript = truncate_transcript(transcript, max_tokens=60000)
 
-    # 2. Call OpenAI Chat Completions with response_format=WorkflowDsl
-    client = OpenAI(api_key=api_key)
+    # 2. Call OpenAI Chat Completions with response_format=WorkflowDsl using fallback rotation
+    keys = get_api_keys(api_key)
+    if not keys:
+        raise ValueError("No valid API keys found in the provided configuration.")
 
-    try:
-        completion = client.beta.chat.completions.parse(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": safe_transcript},
-            ],
-            response_format=WorkflowDsl,
-            temperature=0.1,
-        )
+    last_error = None
+    for key in keys:
+        try:
+            client, model_name = get_llm_client_and_model(key)
+            completion = client.beta.chat.completions.parse(
+                model=model_name,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": safe_transcript},
+                ],
+                response_format=WorkflowDsl,
+                temperature=0.1,
+            )
 
-        parsed_dsl = completion.choices[0].message.parsed
-        if not parsed_dsl:
-            raise RuntimeError("OpenAI failed to parse the transcript into WorkflowDsl.")
+            parsed_dsl = completion.choices[0].message.parsed
+            if not parsed_dsl:
+                raise RuntimeError("OpenAI failed to parse the transcript into WorkflowDsl.")
 
-        return parsed_dsl
+            return parsed_dsl
 
-    except Exception as e:
-        logger.exception("Error during LLM SOP extraction parsing")
-        raise RuntimeError(f"LLM compilation failed: {str(e)}") from e
+        except Exception as e:
+            logger.warning(f"LLM SOP extraction failed with key starting with {key[:10]}...: {e}")
+            last_error = e
+
+    logger.exception("All API keys failed during LLM SOP extraction parsing")
+    raise RuntimeError(
+        f"LLM compilation failed (all keys exhausted): {str(last_error)}"
+    ) from last_error
