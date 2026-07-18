@@ -71,20 +71,27 @@ def generate_component():
     for key in keys:
         try:
             client, model_name = get_llm_client_and_model(key)
-            completion = client.beta.chat.completions.parse(
+            completion = client.chat.completions.create(
                 model=model_name,
                 messages=[
                     {"role": "system", "content": COMPONENT_SYSTEM_PROMPT},
                     {"role": "user", "content": f"Generate a component for: {payload.prompt}"},
                 ],
-                response_format=ComponentGenerationResponse,
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "ComponentGenerationResponse",
+                        "schema": ComponentGenerationResponse.model_json_schema(),
+                    },
+                },
                 temperature=0.2,
             )
 
-            parsed_response = completion.choices[0].message.parsed
-            if not parsed_response:
-                raise RuntimeError("Failed to parse component code.")
+            content = completion.choices[0].message.content
+            if not content:
+                raise RuntimeError("Failed to generate component response.")
 
+            parsed_response = ComponentGenerationResponse.model_validate_json(content)
             return jsonify(code=parsed_response.code, componentName=parsed_response.component_name)
 
         except Exception as e:
